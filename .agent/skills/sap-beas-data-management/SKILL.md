@@ -18,5 +18,10 @@ When dealing with SAP B1 or BEAS Manufacturing REST/OData APIs within the WebApp
 
 ### 3. Navigation and Routing
 - **App and Pages**: Screen navigation should be controlled using a `sap.m.App` container holding multiple `sap.m.Page` controls.
-- **Routing**: You can switch pages programmatically using `myApp.to("pageId")` or set up the native `sap.m.routing.Router` for complex applications. Avoid writing raw DOM replacement logic.
-- **Memory Management**: Ensure that pages or complex controls are properly managed or destroyed if they are generated dynamically, to prevent memory leaks on factory tablets.
+- **Tab Navigation (UX Flow)**: When a user performs a search (e.g., typing an OP and pressing enter), the application should automatically switch to the results tab using `sap.ui.getCore().byId("tabBarId").setSelectedKey("resultsKey")`.
+- **Search Triggers**: Use the `submit` and `valueHelpRequest` events on `sap.m.Input` controls to trigger API searches natively. Do not rely exclusively on detached "Search" buttons if an input field is the primary driver.
+- **Routing**: You can switch pages programmatically using `myApp.to("pageId")` or set up the native `sap.m.routing.Router`. Avoid writing raw DOM replacement logic.
+
+### 4. Mock Data Rules (Strict Security)
+- **NO CLIENT DATA**: When creating mock data or static examples, it is STRICTLY PROHIBITED to use real or suspected client data (e.g., real OP numbers, exact part numbers, client names).
+- **Generic Manufacturing Data**: Always invent highly generic dummy data (e.g., "OP-99201", "PRD-001 Motor Elétrico", "Rolamento de Esferas").

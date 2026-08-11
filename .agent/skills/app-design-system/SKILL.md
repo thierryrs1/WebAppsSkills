@@ -14,7 +14,7 @@ When designing the user interface (UI) for SAP Business One and BEAS Manufacturi
 
 ### 2. SAP Fiori Visual Style & BEAS Identity
 The design MUST be identical to the standard **SAP Fiori** experience, aligning specifically with how BEAS portals are structured.
-- **BEAS Portal Layouts**: The app content is usually rendered inside a white container over the portal's light blue background. Use `sap.m.IconTabBar` horizontally to separate logical sections (e.g., "Ordens", "Cabeçalho", "Linhas", "Colunas").
+- **BEAS Portal Layouts**: The app content is usually rendered inside a white container over the portal's light blue background. Use `sap.m.IconTabBar` horizontally to separate logical sections (e.g., "Ordens", "Cabeçalho", "Linhas"). For forms and header details, strictly use `sap.ui.layout.form.SimpleForm` to create perfectly aligned, multi-column Fiori Object Page layouts.
 - **Data Lists (Dense/Compact)**: When listing orders or operations, use `sap.m.List` with `sap.m.CustomListItem`. Lists in BEAS portals often present a lot of data; apply the `sapUiSizeCompact` density class to list containers so items fit tightly on the screen (often with dashed separators).
 - **Inputs and Validation**: Search bars and form inputs typically span the full width of their white panels. Use `valueState="Error"` (red borders) for mandatory/invalid fields, and utilize inner icons (like a key `sap-icon://key`) to denote primary keys or lookups.
 - **UI Elements**: Make extensive use of `sap.m.ObjectStatus` to add semantic colors (e.g., Warning, Success) to text statuses like "Depósito" or "DESCONGELAR".
