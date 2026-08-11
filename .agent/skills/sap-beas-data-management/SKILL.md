@@ -7,13 +7,13 @@ description: Detailed guidelines for managing data fetching, API error handling,
 
 When dealing with SAP B1 or BEAS Manufacturing REST/OData APIs within the WebApp portal, you must strictly follow these rules to ensure stability, especially on factory floor devices.
 
-### 1. Tratamento de Erros e Feedback de Loading (Obrigatório)
-- **Prevenção de Congelamento:** Nunca permita que a interface congele sem dar feedback ao usuário durante chamadas de API.
-- **Múltiplas Requisições (Progresso):** Sempre que a aplicação precisar disparar múltiplas requisições em lote (ex: salvar dezenas de amostras e medições ao mesmo tempo), é OBRIGATÓRIO implementar uma tela de carregamento (Loading Screen) que exiba a **porcentagem (%)** do processo concluído. Isso é vital para que o operador saiba que o sistema não travou.
-- **Requisições Simples:** Para consultas únicas rápidas, utilize o componente `BusyIndicator` do padrão SAP Fiori.
-- **Tratamento de Exceções:** Caso a API do ERP retorne um erro (Timeout, Erro 500, etc.), trate-o imediatamente exibindo um `MessageBox` amigável para o usuário. Falhas silenciosas (apenas no console) são proibidas.
+### 1. Error Handling and Loading Feedback (Mandatory)
+- **Prevent Freezing:** Never allow the interface to freeze without providing feedback to the user during API calls.
+- **Multiple Requests (Progress Indicator):** Whenever the application needs to trigger multiple batch requests (e.g., saving dozens of samples and measurements simultaneously), it is MANDATORY to implement a Loading Screen displaying the **percentage (%)** of the completed process. This is vital so the operator knows the system has not crashed.
+- **Simple Requests:** For fast, single queries, use the `BusyIndicator` component from the SAP Fiori standard.
+- **Exception Handling:** If the ERP API returns an error (Timeout, Error 500, etc.), handle it immediately by displaying a user-friendly `MessageBox`. Silent failures (only logging to the console) are strictly prohibited.
 
-### 2. Gerenciamento de Navegação Leve (Routing)
-- **Navegação Baseada em Estado:** Como não podemos utilizar bibliotecas de roteamento modernas dependentes de bundlers (como `react-router-dom`), toda a navegação de telas deve ser controlada através de Estados (State Management) no componente raiz (`app.js`).
-- **Implementação:** Utilize estados simples (ex: `const [currentScreen, setCurrentScreen] = useState('LIST')` ou o mapeamento da entidade selecionada `const [selectedOrder, setSelectedOrder] = useState(null)`) para alternar quais componentes devem ser renderizados.
-- **Gestão de Memória:** Certifique-se de que o componente anterior seja corretamente desmontado ao alternar a tela, para evitar vazamento de memória nos tablets de fábrica.
+### 2. Lightweight Navigation Management (Routing)
+- **State-Based Navigation:** Since we cannot use modern routing libraries that depend on bundlers (such as `react-router-dom`), all screen navigation must be controlled via State Management in the root component (`app.js`).
+- **Implementation:** Use simple states (e.g., `const [currentScreen, setCurrentScreen] = useState('LIST')` or mapping the selected entity `const [selectedOrder, setSelectedOrder] = useState(null)`) to toggle which components should be rendered.
+- **Memory Management:** Ensure that the previous component is properly unmounted when switching screens to prevent memory leaks on factory tablets.
