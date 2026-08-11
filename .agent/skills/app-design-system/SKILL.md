@@ -25,3 +25,6 @@ The design MUST be identical to the standard and premium **SAP Fiori** experienc
 ### 4. Usability (Manufacturing and ERP UX)
 - **Shop Floor Accessibility (BEAS)**: Interfaces designed for BEAS Manufacturing are often used on industrial tablets. Buttons and touch areas must have generous sizing, prioritizing visibility and click speed.
 - **Visual Feedback**: Provide instant indicators using native components: *Message Toast* modals for brief successes, and *Message Box* or *Popover* for ERP alerts and errors.
+
+### 5. UI5 React Component Gotchas
+- **Headers in ObjectPage**: The `@ui5/webcomponents-react` library DOES NOT have an `ObjectPageHeader` component. To provide a header for the `ObjectPage`, use the `DynamicPageHeader` component and pass it into the `headerContent` prop.

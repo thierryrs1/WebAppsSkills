@@ -28,3 +28,8 @@ When developing the logic and structure for BEAS and SAP Business One applicatio
 - If the development is specifically for the **BEAS Portal**:
   - All network request logic (fetching ERP data), authentication, session maintenance, and initial portal rendering must be triggered from `app.js`.
   - Centralize state management and API calls at the beginning of the `app.js` lifecycle before mounting the graphical interface.
+
+### 6. No Build Tools & Native JavaScript (Crucial Constraint)
+- **NO JSX and NO VITE/WEBPACK**: Since the BEAS portal runs the module directly and we must avoid complex build steps, DO NOT use JSX syntax (`<App />`). You MUST write standard ECMAScript using `React.createElement` (e.g., `const e = React.createElement;`) so the browser doesn't throw Syntax Errors.
+- **NO CSS Imports**: Do not use `import './style.css'` in the JS code. Native browsers enforce strict MIME checking for ES modules and will throw an error. Rely exclusively on dynamic DOM injection (`document.createElement('link')`) as specified in rule 4.
+- **Local Testing**: To test the UI locally without bundlers, developers must manually create an `index.html` (for local dev only) with an `<script type="importmap">` mapping `react`, `react-dom`, and `@ui5/webcomponents-react` to a CDN like `https://esm.sh/`. The file must be served via a local HTTP server (like `npx serve`), never via `file://`.
