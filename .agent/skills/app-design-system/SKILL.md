@@ -12,14 +12,15 @@ When designing the user interface (UI) for SAP Business One and BEAS Manufacturi
 - **Official Components**: Utilize the native controls provided by the `sap.m` (Mobile/Main) and `sap.tnt` libraries (e.g., `sap.m.Button`, `sap.m.Page`, `sap.m.Table`).
 - **Implementation**: Instantiate components programmatically via JavaScript (e.g., `new sap.m.Button({...})`) or using XML Views if instructed, relying on the global `sap` object loaded by the bootstrap.
 
-### 2. SAP Fiori Visual Style
-The design MUST be identical to the standard and premium **SAP Fiori** experience.
-- **Structural Layouts**: Organize pages using standard SAPUI5 containers like `sap.m.App`, `sap.m.Page`, and `sap.f.DynamicPage`.
-- **UI Elements (Fiori)**: Make extensive use of `sap.m.Panel`, `sap.m.Table`, and `sap.m.ObjectHeader`.
-- **Typography and Icons**: Icons should be loaded using the `sap-icon://` protocol native to SAPUI5.
+### 2. SAP Fiori Visual Style (Premium & Dynamic)
+The design MUST be identical to the standard and premium **SAP Fiori** experience, avoiding "flat" or "lifeless" interfaces.
+- **Rich Layouts**: Instead of plain pages, use rich containers like `sap.f.DynamicPage` or `sap.uxap.ObjectPageLayout`.
+- **UI Elements (Fiori)**: Make extensive use of `sap.m.ObjectHeader` (for highlighted records), `sap.m.ObjectStatus` (to add semantic colors like Success/Warning/Error to text), and `sap.m.InfoLabel`. 
+- **Spacing and Margins**: Liberally use SAPUI5 CSS margin and padding classes (e.g., `sapUiSmallMargin`, `sapUiResponsivePadding--header`) to give the UI breathing room. Don't let elements feel cramped.
+- **Typography and Icons**: Icons should be loaded using the `sap-icon://` protocol native to SAPUI5. Use icons on buttons and headers to make the UI more vibrant.
 
 ### 3. Theme Restrictions (Mandatory: Light Mode)
-- **Recommended Themes**: The SAPUI5 bootstrap should enforce a clear, modern light theme like **SAP Belize** (`sap_belize`) or **SAP Horizon** (`sap_horizon`).
+- **Recommended Themes**: You MUST enforce the modern **SAP Horizon** (`sap_horizon`) theme for a brighter, more rounded, and contemporary look. Avoid the older `sap_belize` theme which looks dated.
 - **PROHIBITION OF DARK MODE**: It is strictly forbidden to create, suggest, or enable any Dark Mode functionality. 
 
 ### 4. Usability (Manufacturing and ERP UX)
