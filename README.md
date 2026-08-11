@@ -20,5 +20,11 @@ Dita as regras rígidas de arquitetura necessárias para que a aplicação rode 
 - **Carregamento Dinâmico:** Proíbe importações diretas de CSS (`import './styles.css'`), orientando a injeção via manipulação dinâmica do DOM.
 - **Testes Locais:** Instruções avançadas sobre como testar as aplicações puras localmente emulando o ambiente via `importmap` de CDNs.
 
+### 3. SAP BEAS Data and State Management (`sap-beas-data-management`)
+Garante a resiliência e estabilidade das chamadas de API e navegação nos dispositivos do chão de fábrica.
+- **Tratamento de Loading (Progresso):** Obriga a exibição de telas de carregamento com porcentagem (%) ao enviar múltiplas requisições em lote, evitando que o usuário ache que o app travou.
+- **Prevenção de Falha Silenciosa:** Todo erro retornado pelo ERP (ex: Timeout, 500) deve acionar uma `MessageBox` de aviso.
+- **Routing Baseado em Estado:** Padroniza a navegação entre telas usando apenas variáveis de estado (sem bibliotecas externas) para respeitar a arquitetura puramente nativa, mantendo baixo consumo de memória.
+
 ## 🚀 Como Utilizar
 Basta colocar o diretório `.agent/skills/` deste repositório na raiz do seu projeto de desenvolvimento. O seu assistente irá automaticamente rastrear e aplicar essas restrições contextuais sempre que você pedir a construção de novos componentes e lógicas pro BEAS.
