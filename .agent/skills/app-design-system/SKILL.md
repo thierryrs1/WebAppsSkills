@@ -12,12 +12,12 @@ When designing the user interface (UI) for SAP Business One and BEAS Manufacturi
 - **Official Components**: Utilize the native controls provided by the `sap.m` (Mobile/Main) and `sap.tnt` libraries (e.g., `sap.m.Button`, `sap.m.Page`, `sap.m.Table`).
 - **Implementation**: Instantiate components programmatically via JavaScript (e.g., `new sap.m.Button({...})`) or using XML Views if instructed, relying on the global `sap` object loaded by the bootstrap.
 
-### 2. SAP Fiori Visual Style (Premium & Dynamic)
-The design MUST be identical to the standard and premium **SAP Fiori** experience, avoiding "flat" or "lifeless" interfaces.
-- **Rich Layouts**: Instead of plain pages, use rich containers like `sap.f.DynamicPage` or `sap.uxap.ObjectPageLayout`.
-- **UI Elements (Fiori)**: Make extensive use of `sap.m.ObjectHeader` (for highlighted records), `sap.m.ObjectStatus` (to add semantic colors like Success/Warning/Error to text), and `sap.m.InfoLabel`. 
-- **Spacing and Margins**: Liberally use SAPUI5 CSS margin and padding classes (e.g., `sapUiSmallMargin`, `sapUiResponsivePadding--header`) to give the UI breathing room. Don't let elements feel cramped.
-- **Typography and Icons**: Icons should be loaded using the `sap-icon://` protocol native to SAPUI5. Use icons on buttons and headers to make the UI more vibrant.
+### 2. SAP Fiori Visual Style & BEAS Identity
+The design MUST be identical to the standard **SAP Fiori** experience, aligning specifically with how BEAS portals are structured.
+- **BEAS Portal Layouts**: The app content is usually rendered inside a white container over the portal's light blue background. Use `sap.m.IconTabBar` horizontally to separate logical sections (e.g., "Ordens", "Cabeçalho", "Linhas", "Colunas").
+- **Data Lists (Dense/Compact)**: When listing orders or operations, use `sap.m.List` with `sap.m.CustomListItem`. Lists in BEAS portals often present a lot of data; apply the `sapUiSizeCompact` density class to list containers so items fit tightly on the screen (often with dashed separators).
+- **Inputs and Validation**: Search bars and form inputs typically span the full width of their white panels. Use `valueState="Error"` (red borders) for mandatory/invalid fields, and utilize inner icons (like a key `sap-icon://key`) to denote primary keys or lookups.
+- **UI Elements**: Make extensive use of `sap.m.ObjectStatus` to add semantic colors (e.g., Warning, Success) to text statuses like "Depósito" or "DESCONGELAR".
 
 ### 3. Theme Restrictions (Mandatory: Light Mode)
 - **Recommended Themes**: You MUST enforce the modern **SAP Horizon** (`sap_horizon`) theme for a brighter, more rounded, and contemporary look. Avoid the older `sap_belize` theme which looks dated.
