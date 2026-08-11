@@ -26,3 +26,6 @@ The design MUST be identical to the standard and premium **SAP Fiori** experienc
 ### 4. Usability (Manufacturing and ERP UX)
 - **Shop Floor Accessibility (BEAS)**: Interfaces designed for BEAS Manufacturing are often used on industrial tablets. Ensure controls have `sapUiSizeCozy` or touch-friendly sizes.
 - **Visual Feedback**: Provide instant indicators using native components: `sap.m.MessageToast` for brief successes, and `sap.m.MessageBox` for ERP alerts and errors.
+
+### 5. Layout Constraints (BEAS Portal)
+- **NO NAVBAR/SHELLBAR**: Do not create or include a global navigation bar, shell bar, or top-level app header (`sap.f.ShellBar`, `sap.tnt.ToolHeader`, etc.) in your UI code (`app.js`). The BEAS Portal environment already provides the outer shell and navigation menu natively. Your application should strictly render only the inner page content (e.g., the `sap.m.Page` or `sap.f.DynamicPage` without the global shell).
